@@ -1,4 +1,9 @@
 /** @type {import('tailwindcss').Config} */
+
+
+const secondEffect = 0.5;
+
+
 export default {
   content: [
     "./index.html",
@@ -7,9 +12,9 @@ export default {
   theme: {
     extend: {
       animation: {
-        blink: 'blink 5s ease-in-out infinite',
-        flip: 'flip 0.5s linear 1 forwards',
-        flip2: 'flip2 0.5s 0.5s linear 1 forwards'
+        blink: 'blink 2s ease-in-out infinite',
+        flip: `flip ${secondEffect}s linear 1 forwards`,
+        show: `show ${secondEffect}s linear 1 forwards`
       },
       keyframes: {
         blink: {
@@ -41,17 +46,23 @@ export default {
           },
 
         },
-        flip2: {
+        show: {
           '0%': {
-            transform: "rotateY(0deg)"
+            transform: "rotateY(180deg)",
+            opacity: 0
           },
           '50%': {
-            transform: "rotateY(90deg)"
+            transform: "rotateY(180deg)",
+            opacity: 0
+          },
+          '51%': {
+            transform: "rotateY(180deg)",
+            opacity: 80
           },
           '100%': {
-            transform: "rotateY(180deg)"
+            transform: "rotateY(180deg)",
+            opacity: 80
           },
-
         },
       }
     },
